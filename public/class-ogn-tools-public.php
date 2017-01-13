@@ -164,5 +164,115 @@ class Ogn_Tools_Public {
 
 	}
 
+	/**
+	 * Register Shortcode
+	 *
+	 * @return void
+	 */
+	public function register_shortcodes() {
+		add_shortcode( 'OGN-Guide', array( $this, 'register_ogn_guide_shortcode' ) );
+		add_shortcode( 'OGN-Helpful-Info', array( $this, 'register_ogn_helpful_info_shortcode' ) );
+		add_shortcode( 'OGN-Current-User', array( $this, 'register_ogn_user_shortcut_shortcode' ) );
+	}
 
+	/**
+	 * Register OGN-Guide Shortcode
+	 *
+	 * @param  array  $atts Array of shortcode attributes
+	 * @return string       The parsed shortcode string
+	 */
+	final public function register_ogn_guide_shortcode( $atts ) {
+		$atts = shortcode_atts( array(
+			'text'		=> 'My Activity',
+		), $atts );
+
+		$link = home_url( 'members/' . bp_core_get_username( get_current_user_id() ) . '/activity/' );
+
+		$menu = '';
+
+		if( is_user_logged_in() ) {
+			$menu .= '<ul class="fa-ul" style="text-transform: uppercase;">';
+				$menu .= '<li class="fa fa-li fa-user-circle"><a href="' . esc_attr( $link ) . '">My Activity</a></li>';
+				$menu .= '<li class="fa fa-li fa-tachometer"><a href="' . get_home_url() . '/activity/">Main Activity Stream</a></li>';
+				$menu .= '<li class="fa fa-li fa-user"><a href="' . get_home_url() . '/members/">Community Directory</a></li>';
+				$menu .= '<li class="fa fa-li fa-users"><a href="' . get_home_url() . '/groups/">Community Groups</a></li>';
+				$menu .= '<li class="fa fa-li fa-calendar"><a href="' . get_home_url() . '/events/">Events</a></li>';
+				$menu .= '<li class="fa fa-li fa-wrench"><a href="' . get_home_url() . '/solutions-center/">Solutions Center</a></li>';
+			$menu .= '</ul>';
+
+			$menu .= '<hr style="color: #BDBBBC; height: 1px;">';
+		}
+
+		$menu .= '<h3 class="widget-title">Helpful Info</h3>';
+		$menu .= '<ul class="fa-ul" style="text-transform: uppercase;">';
+			$menu .= '<li class="fa fa-li fa-heart"><a href="' . get_home_url() . '/about/">Our Mission</a></li>';
+			$menu .= '<li class="fa fa-li fa-question"><a href="' . get_home_url() . '/faqs/">FAQS</a></li>';
+			$menu .= '<li class="fa fa-li fa-flag"><a href="' . get_home_url() . '/member-pledge/">Member Pledge</a></li>';
+			$menu .= '<li class="fa fa-li fa-flag"><a href="' . get_home_url() . '/contributor-pledge/">Contributor Pledge</a></li>';
+			$menu .= '<li class="fa fa-li fa-television"><a href="' . get_home_url() . '/video-tutorials/">Video Tutorials</a></li>';
+			if( is_user_logged_in() ) {
+				$menu .= '<li class="fa fa-li fa-star-o"><a href="' . get_home_url() . '/apply-to-contribute/">Apply to Contribute</a></li>';
+			} else {
+				$menu .= '<li class="fa fa-li fa-star-o"><a href="' . get_home_url() . '/register/">Join Us</a></li>';
+			}
+		$menu .= '</ul>';
+
+		return $menu;
+	}
+
+	/**
+	 * Register OGN-Helpful-Info Shortcode
+	 *
+	 * @param  array  $atts Array of shortcode attributes
+	 * @return string       The parsed shortcode string
+	 */
+	final public function register_ogn_helpful_info_shortcode( $atts ) {
+		$atts = shortcode_atts( array(
+			'text'		=> 'My Activity',
+		), $atts );
+
+		$link = home_url( 'members/' . bp_core_get_username( get_current_user_id() ) . '/activity/' );
+
+		$menu = '<ul class="fa-ul" style="text-transform: uppercase;">';
+			if( is_user_logged_in() ) {
+				$menu .= '<li class="fa fa-li fa-user-circle"><a href="' . esc_attr( $link ) . '">My Activity</a></li>';
+				$menu .= '<li class="fa fa-li fa-tachometer"><a href="' . get_home_url() . '/activity/">Main Activity Stream</a></li>';
+				$menu .= '<li class="fa fa-li fa-user"><a href="' . get_home_url() . '/members/">Community Directory</a></li>';
+				$menu .= '<li class="fa fa-li fa-calendar"><a href="' . get_home_url() . '/events/">Events</a></li>';
+				$menu .= '<li class="fa fa-li fa-users"><a href="' . get_home_url() . '/groups/">Community Groups</a></li>';
+				$menu .= '<li class="fa fa-li fa-wrench"><a href="' . get_home_url() . '/solutions-center/">Solutions Center</a></li>';
+			}
+			$menu .= '<li class="fa fa-li fa-heart"><a href="' . get_home_url() . '/about/">Our Mission</a></li>';
+			$menu .= '<li class="fa fa-li fa-question"><a href="' . get_home_url() . '/faqs/">FAQS</a></li>';
+			$menu .= '<li class="fa fa-li fa-flag"><a href="' . get_home_url() . '/member-pledge/">Member Pledge</a></li>';
+			$menu .= '<li class="fa fa-li fa-flag"><a href="' . get_home_url() . '/contributor-pledge/">Contributor Pledge</a></li>';
+			$menu .= '<li class="fa fa-li fa-television"><a href="' . get_home_url() . '/video-tutorials/">Video Tutorials</a></li>';
+			if( is_user_logged_in() ) {
+				$menu .= '<li class="fa fa-li fa-star-o"><a href="' . get_home_url() . '/apply-to-contribute/">Apply to Contribute</a></li>';
+			} else {
+				$menu .= '<li class="fa fa-li fa-star-o"><a href="' . get_home_url() . '/register/">Join Us</a></li>';
+			}
+		$menu .= '</ul>';
+
+		return $menu;
+	}
+
+	/**
+	 * Register OGN-Current-User Shortcode
+	 *
+	 * @param  array  $atts Array of shortcode attributes
+	 * @return string       The parsed shortcode string
+	 */
+	final public function register_ogn_user_shortcut_shortcode( $atts ) {
+		$atts = shortcode_atts( array(
+			'text'		=> 'My Activity',
+		), $atts );
+
+		if( !is_user_logged_in() )
+			return '';
+
+		$link = home_url( 'members/' . bp_core_get_username( get_current_user_id() ) . '/activity/' );
+
+		return '<li class="fa fa-li fa-user-circle"><a href="' . esc_attr( $link ) . '"">' . $atts['text'] . '</a></li>';
+	}
 }
