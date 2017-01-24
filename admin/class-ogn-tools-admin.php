@@ -830,4 +830,17 @@ class Ogn_Tools_Admin {
         }
 
     }
+
+
+    /**
+     * Removes Adbutler Dashboard Widget for Non Admins
+     *
+     * @return void
+     */
+    final public function fix_adbutler_dashboard_widget() {
+        if ( ! current_user_can( 'manage_options' ) ) {
+            global $wp_meta_boxes;
+            remove_meta_box( 'adbutler_dashboard_summary', 'dashboard', 'normal' );
+        }
+    }
 }

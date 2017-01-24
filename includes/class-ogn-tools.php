@@ -180,6 +180,7 @@ class Ogn_Tools {
 		$this->loader->add_filter( 'pre_get_posts', $plugin_admin, 'posts_for_current_author' );
 		$this->loader->add_filter( 'posts_where', $plugin_admin, 'hide_media_library' );
 		// $this->loader->add_filter( 'wp_dropdown_users', $plugin_admin, 'ourgreennation_switch_users' );
+		$this->loader->add_action( 'wp_dashboard_setup', $plugin_admin, 'fix_adbutler_dashboard_widget', 99 );
 
 	}
 
