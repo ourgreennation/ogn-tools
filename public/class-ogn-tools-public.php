@@ -275,4 +275,19 @@ class Ogn_Tools_Public {
 
 		return '<li class="fa fa-li fa-user-circle"><a href="' . esc_attr( $link ) . '"">' . $atts['text'] . '</a></li>';
 	}
+
+	/**
+	 * Redirect visit to events archive to the login page
+	 * 
+	 * @return void
+	 */
+	public function maybe_redirect_events() {
+		if ( is_user_logged_in() || ! is_post_type_archive( 'tribe_events' ) ) {
+			return;
+		}
+
+		// Redirect Visitor to the Events Page to Login.
+		wp_safe_redirect( wp_login_url( get_permalink( get_queried_object_id() ) ) );
+		exit;
+	}
 }

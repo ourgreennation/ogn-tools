@@ -199,7 +199,7 @@ class Ogn_Tools {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		$this->loader->add_action( 'admin_init', $plugin_public, 'ourgreennation_bp_reactions', 6 );
 		$this->loader->add_action( 'admin_bar_menu', $plugin_public, 'ourgreennation_wp_admin_bar_custom_account_menu', 11 );
-
+		$this->loader->add_action( 'wp', $plugin_public, 'maybe_redirect_events' );
 		add_filter( 'widget_text', 'do_shortcode' );
 		$plugin_public->register_shortcodes();
 	}
