@@ -220,7 +220,7 @@ class Ogn_Tools_Admin {
             'description'           => __( 'Books', $this->plugin_name ),
             'labels'                => $labels,
             'supports'              => array( 'title', 'editor', 'thumbnail', ),
-            'taxonomies'            => array( 'category' ),
+            'taxonomies'            => array(),
             'hierarchical'          => false,
             'public'                => true,
             'show_ui'               => true,
