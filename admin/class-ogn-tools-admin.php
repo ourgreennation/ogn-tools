@@ -107,7 +107,7 @@ class Ogn_Tools_Admin {
      * @since    1.0.0
      */
     function display_custom_admin_footer() {
-        echo '<span id="footer-thankyou">Developed by <a href="https://orangeblossommedia.com" target="_blank">Orange Blossom Media</a>. Built on <a href="http://wordpress.org">WordPress</a>.</span>';
+        echo '';
     }
 
 
