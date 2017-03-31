@@ -624,7 +624,7 @@ class Ogn_Tools_Admin {
         global $current_user;
 
         // Confirm that the user is logged in but not an admin
-        if( is_user_logged_in() && !current_user_can( 'manage_sites' ) ){
+        if( is_user_logged_in() && !current_user_can( 'manage_options' ) ){
              if( isset( $_POST['action'] ) && ( $_POST['action'] == 'query-attachments' ) ){
                 $where .= ' AND post_author='.$current_user->data->ID;
             }
